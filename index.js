@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8080 });
+const server = new WebSocket.Server({ port: 8080 });
 
 const data = [1, 2, 3, 4, 5, 6]
 
@@ -12,7 +12,7 @@ function* sendData() {
   }
 }
 
-wss.on('connection', (ws) => {
+server.on('connection', (ws) => {
   ws.send('Connected to websocket');
   
   // Send a specific message every 2 seconds
@@ -21,7 +21,7 @@ wss.on('connection', (ws) => {
     ws.send(genObj.next().value)}, 2000)
 });
 
-wss.on('message', (message) => {
+server.on('message', (message) => {
   // Code to handle incoming messages
 });
 
