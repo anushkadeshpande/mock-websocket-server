@@ -8,7 +8,7 @@ function* sendData() {
   let i = 0
   while(i != data.length) {
     yield(data[i])
-    i++
+    i = (i + 1) % data.length
   }
 }
 
